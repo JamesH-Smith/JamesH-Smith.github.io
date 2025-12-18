@@ -1,10 +1,133 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>James H. Smith | Engineering Portfolio</title>
+    <style>
+        /* Basic Styling */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+        header {
+            background: #2c3e50;
+            color: #fff;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 2rem;
+        }
+        section {
+            margin-bottom: 3rem;
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        /* Project Grid */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .project-card {
+            border: 1px solid #ddd;
+            padding: 1rem;
+            border-radius: 5px;
+            transition: transform 0.3s;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: #3498db;
+        }
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            list-style: none;
+            padding: 0;
+        }
+        .skills-list li {
+            background: #3498db;
+            color: #fff;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #777;
+        }
+    </style>
 </head>
 <body>
-    <h1>PRojects:</h1>
-    <p>My GitHub Pages site is under development.</p>
+
+    <header>
+        <h1>James H. Smith</h1>
+        <p>Mechanical/Software/Systems Engineer</p>
+    </header>
+
+    <div class="container">
+        <section id="about">
+            <h2>About Me</h2>
+            <p>Hello! I am an aspiring engineer with a focus on solving complex problems through design and technology. Currently hosting my professional portfolio on GitHub Pages.</p>
+        </section>
+
+        <section id="skills">
+            <h2>Technical Skills</h2>
+            <ul class="skills-list">
+                <li>Python</li>
+                <li>AutoCAD / SolidWorks</li>
+                <li>Project Management</li>
+                <li>Data Analysis</li>
+                <li>HTML/CSS</li>
+            </ul>
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <h3>Project Title One</h3>
+                    <p>Brief description of what you built, the tools you used, and the problem you solved.</p>
+                    <a href="#">View Details →</a>
+                </div>
+                <div class="project-card">
+                    <h3>Project Title Two</h3>
+                    <p>Brief description of what you built, the tools you used, and the problem you solved.</p>
+                    <a href="#">View Details →</a>
+                </div>
+                <div class="project-card">
+                    <h3>Project Title Three</h3>
+                    <p>Brief description of what you built, the tools you used, and the problem you solved.</p>
+                    <a href="#">View Details →</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Contact</h2>
+            <p>Email: email@example.com</p>
+            <p>LinkedIn: <a href="#">linkedin.com/in/username</a></p>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 James H. Smith. Built with GitHub Pages.</p>
+    </footer>
+
 </body>
 </html>
