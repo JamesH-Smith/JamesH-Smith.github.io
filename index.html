@@ -5,44 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>James H. Smith | Engineering Portfolio</title>
     <style>
-        /* Basic Styling */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            color: #333;
-            background-color: #f4f4f4;
-        }
-        header {
-            background: #2c3e50;
-            color: #fff;
-            padding: 2rem 1rem;
-            text-align: center;
-        }
-        .container {
-            max-width: 1000px;
-            margin: auto;
-            padding: 2rem;
-        }
-        section {
-            margin-bottom: 3rem;
-            background: #fff;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        h2 {
-            color: #2c3e50;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 10px;
-        }
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>James H. Smith | Engineering Portfolio</title>
-    <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
@@ -82,12 +44,13 @@
         }
 
         .project-card {
-            position: relative; /* Essential for positioning the overlay */
+            position: relative;
             overflow: hidden;
             border-radius: 8px;
-            height: 250px;
-            background: #000; /* Dark background if image fails to load */
+            height: 280px;
+            background: #2c3e50; /* Fallback color */
             transition: transform 0.3s;
+            cursor: pointer;
         }
 
         .project-card:hover {
@@ -107,7 +70,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(44, 62, 80, 0.9); /* Transparent dark blue */
+            background: rgba(44, 62, 80, 0.95);
             color: white;
             display: flex;
             flex-direction: column;
@@ -115,13 +78,13 @@
             align-items: center;
             text-align: center;
             padding: 20px;
-            opacity: 0; /* Hidden by default */
+            opacity: 0;
             transition: opacity 0.4s ease;
             box-sizing: border-box;
         }
 
         .project-card:hover .project-overlay {
-            opacity: 1; /* Shows when mouse hovers */
+            opacity: 1;
         }
 
         .project-overlay h3 {
@@ -129,7 +92,12 @@
             color: #3498db;
         }
 
-        /* --- SKILLS & FOOTER --- */
+        .project-overlay p {
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        /* --- SKILLS & LISTS --- */
         .skills-list {
             display: flex;
             flex-wrap: wrap;
@@ -149,56 +117,64 @@
             padding: 2rem;
             color: #777;
         }
+        a.btn {
+            color: #fff;
+            text-decoration: none;
+            border: 1px solid #3498db;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+        a.btn:hover {
+            background: #3498db;
+        }
     </style>
 </head>
 <body>
 
     <header>
         <h1>James H. Smith</h1>
-        <p>Engineering Portfolio</p>
-    </header>
-
-    <div class="container">
-        <section id="projects">
-            <h2>Projects</h2>
-            <div class="project-grid">
-                <div class="project-card">
-                    <img src="your-image.jpg" alt="Project 1">
-                    <div class="project-overlay">
-                        <h3>Project Title</h3>
-                        <p>This is where your engineering description goes!</p>
-                        <a href="#" style="color: #3498db; text-decoration: none; font-weight: bold;">View Details →</a>
-                    </div>
-                </div>
-                </div>
-        </section>
-
-        <section id="skills">
-            <h2>Technical Skills</h2>
-            <ul class="skills-list">
-                <li>Python</li>
-                <li>CAD</li>
-                <li>Project Management</li>
-            </ul>
-        </section>
-    </div>
-
-    <footer>
-        <p>&copy; 2025 James H. Smith</p>
-    </footer>
-
-</body>
-</html>
-
-    <header>
-        <h1>James H. Smith</h1>
-        <p>Aerospace/Integration/Systems Engineer</p>
+        <p>Aerospace / Integration / Systems Engineer</p>
     </header>
 
     <div class="container">
         <section id="about">
             <h2>About Me</h2>
             <p>Hello! I am an aspiring engineer with a focus on solving complex problems through design and technology. Currently hosting my professional portfolio on GitHub Pages.</p>
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="project-grid">
+                
+                <div class="project-card" onclick="window.location.href='uav.html';">
+                    <img src="uav-image.jpg" alt="UAV Tracking">
+                    <div class="project-overlay">
+                        <h3>Off-Board Object Tracking UAV</h3>
+                        <p>OpenCV tracker with ESP32 Kalman filter for fixed-wing UAV.</p>
+                        <a href="uav.html" class="btn">View Project Details →</a>
+                    </div>
+                </div>
+
+                <div class="project-card" onclick="window.location.href='toolbox.html';">
+                    <img src="toolbox-image.jpg" alt="Hand Crafted Tool Box">
+                    <div class="project-overlay">
+                        <h3>Hand Crafted Tool Box</h3>
+                        <p>Complete process from CAD/Fusion 360 to manufacturing techniques.</p>
+                        <a href="toolbox.html" class="btn">View Project Details →</a>
+                    </div>
+                </div>
+
+                <div class="project-card" onclick="window.location.href='glider.html';">
+                    <img src="glider-image.jpg" alt="Biodegradable Glider">
+                    <div class="project-overlay">
+                        <h3>Biodegradable Glider</h3>
+                        <p>2m wingspan glider using biodegradable materials for 20km glide.</p>
+                        <a href="glider.html" class="btn">View Project Details →</a>
+                    </div>
+                </div>
+
+            </div>
         </section>
 
         <section id="skills">
@@ -210,28 +186,6 @@
                 <li>Data Analysis</li>
                 <li>HTML/CSS</li>
             </ul>
-        </section>
-
-        <section id="projects">
-            <h2>Projects</h2>
-            <div class="project-grid">
-                <div class="project-card">
-                    <h3>Off-Board Object Tracking UAV</h3>
-                    <p>This project implements an off-board "click-to-track" tracking system that integrates a laptop-based OpenCV tracker with an ESP32-based Kalman filter to 
-                        command coords to a composite fixed-wing UAV.</p>
-                    <a href="#">View Details →</a>
-                </div>
-                <div class="project-card">
-                    <h3>Hand Crafted Tool Box</h3>
-                    <p>Designed, evaluated and made a tool box to display a full round process from CAD/Fusion 360 to manufacturing tecniques.</p>
-                    <a href="#">View Details →</a>
-                </div>
-                <div class="project-card">
-                    <h3>Biodegradable Glider</h3>
-                    <p>Complete use of biodegradable materials to design a 2m wingspan glider that can carry 1kg payload while and able to glide 20km from 2km altitude.</p>
-                    <a href="#">View Details →</a>
-                </div>
-            </div>
         </section>
 
         <section id="contact">
