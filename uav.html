@@ -214,15 +214,41 @@
             </p>
         </section>
 
+        <section id="manufacture-cad">
+    <h2>Aerodynamics and Stability Analysis</h2>
+
+    <figure class="result-figure">
+        <img src="images/uav/ISR_UAV v18.png" alt="Aerodynamic Analysis">
+        <figcaption class="result-caption">
+            Figure 1: Lift-to-drag ratio analysis and pressure distribution over the wing surface at cruise velocity.
+        </figcaption>
+    </figure>
+
+    <h3>Aerodynamic Efficiency</h3>
+    <p>
+        The airframe geometry was optimized for high <strong>lift-to-drag (L/D) ratios</strong> to maximize flight endurance. 
+        Using Fusion 360's simulation tools, the wing's airfoil section was selected to provide stable lift at the low Reynolds numbers 
+        typical of small-scale UAV operations, ensuring efficient ISR loitering.
+    </p>
+    
+    <h3>Stability Analysis</h3>
+    <p>
+        Static stability was a primary design requirement. The <strong>Center of Gravity (CG)</strong> was precisely 
+        calculated relative to the Mean Aerodynamic Chord (MAC) to ensure a positive static margin. 
+        This prevents pitch-instability and allows the Kalman filter to maintain smoother tracking during atmospheric disturbances.
+    </p>
+        </section>
+
+        
+        
+
         <section id="filter-analysis">
-            <h2>Kalman Filter & Object Tracker Analysis</h2>
+            <h2>Real-Time Target Tracking & State Estimation</h2>
             
-            <h3>Explanation</h3>
+            <h3>Stage 1</h3>
             <p>
-                The integration of a <strong>Kalman Filter</strong> on the ESP32 serves as the state estimator for the system. 
-                In object tracking, raw coordinates from OpenCV often contain noise due to vibration, lighting changes, or camera latency. 
-                The filter predicts the target's next position based on its velocity and updates that prediction using the incoming 
-                sensor data (measurement).
+                This module implements a Linear Kalman Filter to estimate the position of a human target moving rapidly across a camera's field of view. 
+                The test was conducted in an outdoor daylight environment with the target positioned 80–100 meters from the sensor..
             </p>
 
             <h3>Discussion</h3>
