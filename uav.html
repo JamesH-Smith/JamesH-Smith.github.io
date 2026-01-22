@@ -1,1 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UAV Project | James H. Smith</title>
+    <style>
+        /* Matching Home Page Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+        header {
+            background: #2c3e50;
+            color: #fff;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 2rem;
+        }
+        section {
+            margin-bottom: 3rem;
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        
+        /* Breadcrumb/Back link */
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
 
+        /* Tech Tags (Reusing Skills List Style) */
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+        .tech-tags li {
+            background: #2c3e50;
+            color: #fff;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+
+        /* Gallery Grid */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .gallery img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .main-project-img {
+            width: 100%;
+            max-height: 450px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Project Detail</h1>
+        <p>Off-Board Object Tracking UAV</p>
+    </header>
+
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Portfolio</a>
+
+        <section id="overview">
+            <img src="images/uav/ISR_UAV v18.png" alt="UAV Main View" class="main-project-img">
+            
+            <h2>Project Overview</h2>
+            <p>
+                This project focuses on the development of an off-board "click-to-track" system for a composite fixed-wing UAV. 
+                By offloading heavy computation to a ground station laptop, the system can perform complex image processing 
+                without taxing the aircraft's onboard power.
+            </p>
+
+            <ul class="tech-tags">
+                <li>OpenCV</li>
+                <li>Python</li>
+                <li>ESP32</li>
+                <li>Kalman Filtering</li>
+                <li>MAVLink</li>
+            </ul>
+        </section>
+
+        <section id="technical-details">
+            <h2>Technical Breakdown</h2>
+            <p>
+                <strong>The Tracking Pipeline:</strong> The system utilizes an OpenCV-based tracker running on a ground-station. 
+                Once a target is selected via the GUI, coordinates are processed through a <strong>Kalman Filter</strong> 
+                implemented on an ESP32 to smooth out noise and predict target motion.
+            </p>
+            <p>
+                <strong>Integration:</strong> Data is transmitted via a telemetry link to the flight controller, 
+                commanding the UAV to maintain a specific offset from the tracked object for persistent ISR (Intelligence, 
+                Surveillance, and Reconnaissance).
+            </p>
+        </section>
+
+        <section id="project-gallery">
+            <h2>Project Gallery</h2>
+            <div class="gallery">
+                <img src="images/uav/ISR_UAV v19.png" alt="UAV Side View">
+                <img src="images/uav/ISR_UAV v18.png" alt="UAV Front View">
+                </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2025 James H. Smith | UAV Engineering Project</p>
+    </footer>
+
+</body>
+</html>
