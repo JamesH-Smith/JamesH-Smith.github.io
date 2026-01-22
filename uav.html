@@ -132,7 +132,7 @@
 <body>
 
     <header>
-        <h1>Project Detail</h1>
+        <h1>James H SMith</h1>
         <p>Off-Board Object Tracking UAV</p>
     </header>
 
@@ -152,7 +152,7 @@
 
             <div class="mySlides">
                 <div class="numbertext">3 / 3</div>
-                <img src="images/uav/placeholder-3.png"> 
+                <img src="images/uav/ISR_UAV_camera.png"> 
             </div>
 
             <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
@@ -162,24 +162,55 @@
         <section id="overview">
             <h2>Project Overview</h2>
             <p>
-                This project focuses on the development of an off-board "click-to-track" system for a composite fixed-wing UAV. 
-                By offloading heavy computation to a ground station laptop, the system can perform complex image processing 
-                without taxing the aircraft's onboard power.
+                This project explores the design and validation of a low-cost, lightweight ISR fixed-wing UAV incorporating a FPV vision-based click-to-track capability under strict computational, mass, and manufacturability constraints.
+                The primary objective is to demonstrate that stable target tracking and flight control can be achieved using minimal onboard processing and commercial off-the-shelf components, without reliance on high-performance 
+                embedded computers.The system integrates a lightweight vision tracker with a custom Kalman filter implemented on an ESP32 companion microcontroller, 
+                which smooths and predicts target coordinates prior to injection into the flight controller. 
+            </p>     
+            <p>
+                This architecture explicitly addresses vision and communication latency, reducing aggressive control inputs that would otherwise induce excessive ESC thermal loading, 
+                actuator wear, and degraded endurance. By prioritising smooth control behaviour, the design enables the use of lighter propulsion hardware and contributes to improved flight efficiency.
+                UAV frame performance was evaluated using XFLR5 followed with manufacturing and material testing, allowing controlled assessment of CG testing with payload placement assessing impacts of vibration and mounting tests.
+                Tracking system performance was evaulated using HITL - Python OPENCV with esp32 to assess latency effects, estimator behaviour, and closed-loop coordinate accuracy response. 
+                The results demonstrate that Kalman-based prediction significantly mitigates latency-induced phase lag, improving tracking stability within the operational limits imposed by 
+                low-cost telemetry and embedded hardware.
             </p>
             <ul class="tech-tags">
                 <li>OpenCV</li>
                 <li>Python</li>
                 <li>ESP32</li>
-                <li>Kalman Filtering</li>
+                <li>Kalman Filter</li>
                 <li>MAVLink</li>
             </ul>
         </section>
 
-        <section id="technical-details">
-            <h2>Technical Breakdown</h2>
+        <section id="Challenges & Trade-offs">
+            <h2>Technical Breakdown & Deliverables</h2>
             <p>
-                <strong>The Tracking Pipeline:</strong> The system utilizes an OpenCV-based tracker running on a ground-station. 
-                Once a target is selected via the GUI, coordinates are processed through a telemetry link to the flight controller.
+                <strong>Hardware and Manufacturing:</strong> To minimise cost and complexity, the system relies on commercial off-the-shelf (COTS) components, 
+                primarily sourced from widely available Chinese manufacturers rather than custom in-house electronics. While this significantly reduces development time and unit cost, it introduces:
+                Greater variability in component quality, Limited access to low-level hardware optimisation and Reduced control over long-term supply consistency.
+                These limitations are considered acceptable for the intended ISR use case, where scalability and replaceability are prioritised over bespoke optimisation.
+            </p>
+            <p>
+                <strong>Communication Range and Latency Constraints:</strong> The ESP32-based companion system communicates using Wi-Fi telemetry, which imposes practical limits on operational range and latency stability.
+                Under typical line-of-sight conditions:
+            </p>
+            <p> 
+                <strong> ->Reliable low-latency operation: ~100–150 m</strong>
+            </p>
+            <p>
+                <strong> ->Degraded performance (increased packet delay and jitter): ~150–300 m</strong>
+            </p>
+            <p>
+                <strong> ->Unstable tracking / unacceptable latency: beyond ~300 m</strong>
+            </p>
+    
+            <p>
+                At extended distances, increased transmission delay and packet loss introduce phase lag between vision measurements and aircraft response, which directly degrades closed-loop tracking performance. 
+                One of the core motivations for the onboard Kalman filter is to mitigate this latency through prediction, extending the usable operating envelope before instability becomes dominant.
+                However, the system is not intended for long-range ISR missions. Instead, it targets short- to medium-range surveillance scenarios where simplicity, 
+                rapid deployment, and low cost outweigh the need for extended communications range.
             </p>
         </section>
 
