@@ -294,7 +294,7 @@
         </div>
 
         <figcaption class="result-caption">
-            Figures: Raw vs Kalman Filter; RMSE Noise Reduction; Kalman Parameter Sensitivity.
+            Figures: Raw vs Kalman Filter; RMSE Noise Reduction; Kalman Parameter Sensitivity Results.
         </figcaption>
     </figure>
 
@@ -322,17 +322,18 @@
     </footer>
 
     <script>
-    // 1. Add a third '1' to the array to track the 3rd gallery
+    // 1. One slot for each gallery: [Gallery 1, Gallery 2, Gallery 3]
     let slideIndex = [1, 1, 1]; 
     
-    // 2. Class names for each gallery
+    // 2. The exact class names used in your HTML
     let slideId = ["mySlides1", "mySlides2", "mySlides3"];
 
-    // 3. Initialize ALL slideshows automatically
+    // 3. Start all slideshows correctly
     for (let i = 0; i < slideId.length; i++) {
         showSlides(1, i);
     }
 
+    // This function runs when you click the arrows
     function plusSlides(n, no) {
         showSlides(slideIndex[no] += n, no);
     }
@@ -341,15 +342,18 @@
         let i;
         let x = document.getElementsByClassName(slideId[no]);
         
-        // Safety check: if the HTML for a gallery doesn't exist yet, stop here
+        // If the gallery doesn't exist on this page, don't do anything
         if (x.length === 0) return; 
 
         if (n > x.length) { slideIndex[no] = 1 }    
         if (n < 1) { slideIndex[no] = x.length }
         
+        // Hide all slides in THIS gallery
         for (i = 0; i < x.length; i++) {
             x[i].style.display = "none";  
         }
+        
+        // Show the current slide
         x[slideIndex[no]-1].style.display = "block";  
     }
 </script>
