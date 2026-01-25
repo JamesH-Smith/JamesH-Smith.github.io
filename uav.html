@@ -127,6 +127,27 @@
             padding: 2rem;
             color: #777;
         }
+        
+        /* Styling for the System Architecture Diagram */
+        .architecture-box {
+            background-color: #2c3e50; /* Navy background to match header */
+            color: #ecf0f1;           /* Light grey text */
+            padding: 20px;
+            border-radius: 6px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+            line-height: 1.2;
+            overflow-x: auto;         /* Allows scrolling if screen is too narrow */
+            border-left: 5px solid #3498db; /* Blue accent bar */
+            margin: 20px 0;
+        }
+        
+        .architecture-box pre {
+            margin: 0;
+            white-space: pre;         /* Keeps your exact spacing */
+        }
+
+        
     </style>
 </head>
 <body>
@@ -186,33 +207,121 @@
             </ul>
         </section>
 
-        <section id="Challenges & Trade-offs">
-            <h2>Challenges & Trade-offs</h2>
+         <section id="filter-analysis">
+            <h2>Real-Time Target Tracking & State Estimation</h2>
+            
+        <section id="system-architecture">
+            <h3>System Architecture & Data Flow</h3>
             <p>
-                <strong>Hardware and Manufacturing:</strong> To minimise cost and complexity, the system relies on commercial off-the-shelf (COTS) components, 
-                primarily sourced from widely available Chinese manufacturers rather than custom in-house electronics. While this significantly reduces development time and unit cost, it introduces:
-                Greater variability in component quality, Limited access to low-level hardware optimisation and Reduced control over long-term supply consistency.
-                These limitations are considered acceptable for the intended ISR use case, where scalability and replaceability are prioritised over bespoke optimisation.
+                The following flow diagram illustrates the closed-loop control and estimation pipeline. 
+                By offloading vision processing to the Ground Station and state estimation to the ESP32, 
+                the system maintains high-frequency tracking despite the inherent latency of the telemetry link.
+            </p>
+        
+            <div class="architecture-box">
+        <pre>
+        [Target]
+           ↓
+        [FPV Camera]
+           ↓  (Analog video, low latency)
+        [Ground Station]
+           ├─ Vision processing (OpenCV / ML)
+           ├─ Target detection (pixel coords)
+           ├─ Camera + attitude projection
+           └─ Target measurement (z_k)
+                   ↓
+           MAVLink over Telemetry (LoRa / SiK)
+                   ↓
+        [Flight Controller]
+           ├─ Timestamped target update
+           ├─ State awareness (vehicle pose)
+           └─ UART forwarding
+                   ↓
+        [ESP32 Estimator]
+           ├─ Kalman predict step
+           ├─ Kalman update step
+           ├─ Latency compensation
+           └─ Smoothed target state (x̂_k)
+                   ↓
+        [Flight Controller]
+           ├─ Guidance / control
+           └─ Actuation (gimbal / navigation)
+        </pre>
+            </div>
+        </section>    
+            
+            <div class="container">
+    
+    <figure class="result-figure" style="margin-top: 0;"> 
+        <div class="slideshow-container">
+            <div class="mySlides mySlides3">
+                <div class="numbertext">1 / 3</div>
+                <img src="images/uav/Raw Vs Kalman.png">
+            </div>
+    
+            <div class="mySlides mySlides3">
+                <div class="numbertext">2 / 3</div>
+                <img src="images/uav/rmse_noise_reduction.png">
+            </div>
+    
+            <div class="mySlides mySlides3">
+                <div class="numbertext">3 / 3</div>
+                <img src="images/uav/kalman_parameter_sensitivity.png"> 
+            </div>
+    
+            <a class="prev" onclick="plusSlides(-1, 2)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1, 2)">&#10095;</a>
+        </div>
+    
+        <figcaption class="result-caption">
+            Figures: Raw vs Kalman Filter; RMSE Noise Reduction; Kalman Parameter Sensitivity Results.
+        </figcaption>
+    </figure>
+    
+    </div>
+            
+            <h3>Stage 1</h3>
+            <p>
+                This module implements a Linear Kalman Filter to estimate the position of a human target moving rapidly across a camera's field of view. 
+                The test was conducted in an outdoor daylight environment with the target positioned 80–100 meters from the sensor..
+            </p>
+
+            <h3>Discussion</h3>
+            <p>
+                During testing, we analyzed the filter's performance regarding <strong>covariance tuning</strong>. By adjusting the 
+                Process Noise (Q) and Measurement Noise (R), we were able to achieve a balance between "responsiveness" and "smoothness." 
+                The discussion further explores how the Kalman filter maintains a target lock even when the OpenCV tracker briefly 
+                loses the object during a rapid banked turn of the UAV.
+            </p>
+        </section>
+
+    </div>
+
+        <section id="Challenges & Trade-offs">
+            <h2>Performance of Final Design</h2>
+            <p>
+                <strong>Hardware and Manufacturing:</strong> Mass around 1.5Kg consisitng of XPS Foam Cut Wing, V-tail and fin, Section of fuselage where nose is 3D printed allowing serated bits for airflow for battery - 
+                being an 18650MA, flight controller being speedybee-F405, as well as pitot tube and Analog FPV Camera,2-5g servos,  , Wing Span 1.8m, . the XPS fuselage will be wrapped 25g, glass fibre to help with surface finish
+                allowing for better aerodynamic efficiency.
             </p>
             <p>
-                <strong>Communication Range and Latency Constraints:</strong> The ESP32-based companion system communicates using Wi-Fi telemetry, which imposes practical limits on operational range and latency stability.
-                Under typical line-of-sight conditions:
+                <strong>Communication Range and Latency:</strong> Drone: 5.8 GHz analog FPV cam + 400 mW VTX, Omnidirectional antenna, ESP32 + LoRa SX1276 with Ground: Directional patch antenna for FPV footage sent by telemetry
             </p>
             <p> 
-                <strong> ->Reliable low-latency operation: ~100–150 m</strong>
+                <strong> ->Reliable low-latency operation: 1.5Km - 2.5Km</strong>
             </p>
             <p>
-                <strong> ->Degraded performance (increased packet delay and jitter): ~150–300 m</strong>
+                <strong> ->Degraded performance (increased packet delay and FPV jitter): 2.5Km - 5Km </strong>
             </p>
             <p>
-                <strong> ->Unstable tracking / unacceptable latency: beyond ~300 m</strong>
+                <strong> ->End-End latency Approximate: 35-85ms </strong>
             </p>
     
             <p>
-                At extended distances, increased transmission delay and packet loss introduce phase lag between vision measurements and aircraft response, which directly degrades closed-loop tracking performance. 
+                At extended distances, FPV video becomes the limiter, increased transmission delay and packet loss introduce phase lag between vision measurements and aircraft response, 
+                which directly degrades closed-loop tracking performance. 
                 One of the core motivations for the onboard Kalman filter is to mitigate this latency through prediction, extending the usable operating envelope before instability becomes dominant.
-                However, the system is not intended for long-range ISR missions. Instead, it targets short- to medium-range surveillance scenarios where simplicity, 
-                rapid deployment, and low cost outweigh the need for extended communications range.
+
             </p>
         </section>
 
@@ -269,6 +378,46 @@
 
         <section id="filter-analysis">
             <h2>Real-Time Target Tracking & State Estimation</h2>
+            
+        <section id="system-architecture">
+            <h3>System Architecture & Data Flow</h3>
+            <p>
+                The following flow diagram illustrates the closed-loop control and estimation pipeline. 
+                By offloading vision processing to the Ground Station and state estimation to the ESP32, 
+                the system maintains high-frequency tracking despite the inherent latency of the telemetry link.
+            </p>
+        
+            <div class="architecture-box">
+        <pre>
+        [Target]
+           ↓
+        [FPV Camera]
+           ↓  (Analog video, low latency)
+        [Ground Station]
+           ├─ Vision processing (OpenCV / ML)
+           ├─ Target detection (pixel coords)
+           ├─ Camera + attitude projection
+           └─ Target measurement (z_k)
+                   ↓
+           MAVLink over Telemetry (LoRa / SiK)
+                   ↓
+        [Flight Controller]
+           ├─ Timestamped target update
+           ├─ State awareness (vehicle pose)
+           └─ UART forwarding
+                   ↓
+        [ESP32 Estimator]
+           ├─ Kalman predict step
+           ├─ Kalman update step
+           ├─ Latency compensation
+           └─ Smoothed target state (x̂_k)
+                   ↓
+        [Flight Controller]
+           ├─ Guidance / control
+           └─ Actuation (gimbal / navigation)
+        </pre>
+            </div>
+        </section>    
             
             <div class="container">
 
