@@ -146,9 +146,31 @@
             margin: 0;
             white-space: pre;         /* Keeps your exact spacing */
         }
+        
+        
+        
+        /* Styling for the Mass Budget Chart */
+        .chart-container {
+            background-color: #ffffff; /* White background makes the chart colors pop */
+            padding: 20px;
+            border-radius: 6px;
+            border-left: 5px solid #3498db; /* Matching your blue accent bar */
+            margin: 20px 0;
+            max-width: 500px; /* Limits size so it doesn't get giant on desktop */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .chart-title {
+            color: #2c3e50;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-align: center;
+        }
 
         
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
@@ -209,6 +231,10 @@
         
         <section id="Challenges & Trade-offs">
             <h2>Performance of Final Design</h2>
+            <div class="chart-container">
+        <canvas id="massChart"></canvas>
+            </div>
+    
             <p>
                 <strong>Hardware and Manufacturing:</strong> Mass around 1.5Kg consisitng of XPS Foam Cut Wing, V-tail and fin, Section of fuselage where nose is 3D printed allowing serated bits for airflow for battery - 
                 being an 18650MA, flight controller being speedybee-F405, as well as pitot tube and Analog FPV Camera,2-5g servos,  , Wing Span 1.8m, . the XPS fuselage will be wrapped 25g, glass fibre to help with surface finish
@@ -449,6 +475,10 @@
         }
         x[slideIndex[no]-1].style.display = "block";  
     }
+        const ctx = document.getElementById('massChart').getContext('2d');
+        new Chart(ctx, { 
+            /* ... all that chart data code from before ... */ 
+        });
 </script>
 
 </body>
