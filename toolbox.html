@@ -159,21 +159,6 @@
 
     <div class="container">
         <a href="index.html" class="back-link">← Back to Portfolio</a>
-
-        <div class="slideshow-container">
-            <div class="mySlides mySlides1">
-                <div class="numbertext">1 / 2</div>
-                <img src="images/toolbox/Toolbox2.png">
-            </div>
-
-            <div class="mySlides mySlides1">
-                <div class="numbertext">2 / 2</div>
-                <img src="images/toolbox/Toolbox1.png">
-            </div>
-
-
-            <a class="prev" onclick="plusSlides(-1, 0)">&#10094;</a>
-            <a class="next" onclick="plusSlides(1, 0)">&#10095;</a>
         </div>
 
         <section id="overview">
@@ -202,48 +187,6 @@
             </ul>
         </section>
         
-        <section id="Challenges & Trade-offs">
-            <h2>Manufacture Sequence</h2>
-            <p>
-                <strong>Hardware and Manufacturing:</strong> Mass around 1.5Kg consisitng of XPS Foam Cut Wing, V-tail and fin, Section of fuselage where nose is 3D printed allowing serated bits for airflow for battery - 
-                being an 18650MA, flight controller being speedybee-F405, as well as pitot tube and Analog FPV Camera,2-5g servos,  , Wing Span 1.8m, . the XPS fuselage will be wrapped 25g, glass fibre to help with surface finish
-                allowing for better aerodynamic efficiency.
-            </p>
-            <p>
-                <strong>Communication Range and Latency:</strong> Drone: 5.8 GHz analog FPV cam + 400 mW VTX, Omnidirectional antenna, ESP32 + LoRa SX1276 with Ground: Directional patch antenna for FPV footage sent by telemetry
-            </p>
-            <p> 
-                <strong> ->Reliable low-latency operation: 1.5Km - 2.5Km</strong>
-            </p>
-            <p>
-                <strong> ->Degraded performance (increased packet delay and FPV jitter): 2.5Km - 5Km </strong>
-            </p>
-            <p>
-                <strong> ->End-End latency Approximate: 35-85ms </strong>
-            </p>
-    
-            <p>
-                At extended distances, FPV video becomes the limiter, increased transmission delay and packet loss introduce phase lag between vision measurements and aircraft response, 
-                which directly degrades closed-loop tracking performance. 
-                One of the core motivations for the onboard Kalman filter is to mitigate this latency through prediction, extending the usable operating envelope before instability becomes dominant.
-
-            </p>
-            <div class="slideshow-container">
-            <div class="mySlides mySlides1">
-                <div class="numbertext">1 / 2</div>
-                <img src="images/toolbox/Toolbox2.png">
-            </div>
-
-            <div class="mySlides mySlides1">
-                <div class="numbertext">2 / 2</div>
-                <img src="images/toolbox/Toolbox1.png">
-            </div>
-
-
-            <a class="prev" onclick="plusSlides(-1, 0)">&#10094;</a>
-            <a class="next" onclick="plusSlides(1, 0)">&#10095;</a>
-        </div>
-        </section>
         
         <section id="filter-analysis">
             <h2>CAD Model</h2>
@@ -270,45 +213,66 @@
                 </div>
             
                 <figcaption class="result-caption">
-                    Figures: Raw vs Kalman Filter; RMSE Noise Reduction; Kalman Parameter Sensitivity Results.
+                    Figures: CAD Model of Tool Box designed from given engineering drawings.
                 </figcaption>
             </figure>
 
-            <h3>Discussion</h3>
             <p>
-                During testing, we analyzed the filter's performance regarding <strong>covariance tuning</strong>. By adjusting the 
-                Process Noise (Q) and Measurement Noise (R), we were able to achieve a balance between "responsiveness" and "smoothness." 
-                The discussion further explores how the Kalman filter maintains a target lock even when the OpenCV tracker briefly 
-                loses the object during a rapid banked turn of the UAV.
+               <strong>CAD Software</strong>: Created a full assembly model using Fusion 360, ensuring proper fitment, tolerances and assembly logic.
             </p>
         </section>
 
         <section id="Challenges & Trade-offs">
             <h2>Manufacture Sequence</h2>
             <p>
-                <strong>Hardware and Manufacturing:</strong> Mass around 1.5Kg consisitng of XPS Foam Cut Wing, V-tail and fin, Section of fuselage where nose is 3D printed allowing serated bits for airflow for battery - 
-                being an 18650MA, flight controller being speedybee-F405, as well as pitot tube and Analog FPV Camera,2-5g servos,  , Wing Span 1.8m, . the XPS fuselage will be wrapped 25g, glass fibre to help with surface finish
-                allowing for better aerodynamic efficiency.
+                <strong>Material Selection & Preparation:</strong>  I utilised Aluminum 6061 for the primary housing due to its excellent strength-to-weight ratio and machinability. 
+                Initial stock was rough-cut using a Horizontal Bandsaw, leaving a 2mm margin for precision facing.
             </p>
             <p>
-                <strong>Communication Range and Latency:</strong> Drone: 5.8 GHz analog FPV cam + 400 mW VTX, Omnidirectional antenna, ESP32 + LoRa SX1276 with Ground: Directional patch antenna for FPV footage sent by telemetry
+                <strong>Manual Milling Operations::</strong> Using a Vertical Milling Machine, I squared the stock to within a 5mm tolerance. 
+                Key skills included using a Dial Test Indicator to "tram" the mill head and an Edge Finder to establish a precise (0,0) datum for all subsequent pocketing and drilling operations.
             </p>
             <p> 
-                <strong> ->Reliable low-latency operation: 1.5Km - 2.5Km</strong>
+                <strong>Precision Hole Placement:</strong> Based on the Engineering Drawings, I used a Center Drill to prevent bit deflection, 
+                followed by a sequence of twist drills and a Reamer to ensure the hinge bores were perfectly concentric and smooth.
             </p>
             <p>
-                <strong> ->Degraded performance (increased packet delay and FPV jitter): 2.5Km - 5Km </strong>
+                <strong>Benchwork & Finishing: </strong> Final assembly involved manual Hand Tapping for threaded fasteners and extensive Deburring using a swiveling blade tool to
+                ensure all edges were safe and professional.
             </p>
-            <p>
-                <strong> ->End-End latency Approximate: 35-85ms </strong>
-            </p>
-    
-            <p>
-                At extended distances, FPV video becomes the limiter, increased transmission delay and packet loss introduce phase lag between vision measurements and aircraft response, 
-                which directly degrades closed-loop tracking performance. 
-                One of the core motivations for the onboard Kalman filter is to mitigate this latency through prediction, extending the usable operating envelope before instability becomes dominant.
 
+            <h2>Technical Skills Demonstrated</h2>
+                <p>
+                <strong>Metrology:</strong> Proficient use of Vernier Calipers, Micrometers, and Bore Gauges for quality control.
+                </p>
+                    <p>
+                        <strong>Blueprint Interpretation:</strong> Translating complex GD&T (Geometric Dimensioning and Tolerancing) symbols into physical machining steps.
+                    </p>
+            <p>
+                <strong>Tooling Selection:</strong>Choosing appropriate Carbide vs. HSS (High-Speed Steel) cutters based on the material's surface feet per minute (SFM) requirements.
             </p>
+            <h2>Engineering Challenge: Mitigating Tool Chatter</h2>
+            <p>
+                One significant challenge during the milling of the main toolbox cavity was Workpiece Vibration (Chatter). 
+                As the end mill reached the center of the aluminum block, a high-pitched resonant frequency began to develop, resulting in a poor surface finish and visible "wavy" marks on the interior walls.
+            </p>
+                
+            <p>
+                <strong>Diagnosis and Resolution:</strong> I identified that the vibration was caused by an imbalance between the tool's rigidity and the spindle speed. 
+                To resolve this, I performed the following adjustments:
+            </p>
+            <p>
+                <strong>Reduced Spindle Speed (RPM):</strong>I lowered the RPM to move out of the resonant frequency of the setup.
+            </p>
+            <p>
+                <strong>Adjusted Feed Rate:</strong>I increased the Feed per Tooth to ensure the cutter was "biting" into the material rather than rubbing against it, which stabilized the tool pressure.
+            </p>
+            <p>
+                <strong>Increased Rigidity:</strong>I re-clamped the workpiece closer to the vise jaws to minimize the "cantilever effect" of the material.
+            </p>
+
+            <h3>Final Result of Toolbox</h3>
+            
             <div class="slideshow-container">
             <div class="mySlides mySlides1">
                 <div class="numbertext">1 / 2</div>
