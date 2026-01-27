@@ -235,7 +235,7 @@
                 <div class="chart-title">Mass Budget (1.5kg)</div>
                 <canvas id="massChart"></canvas>
             </div>
-        </section>
+        
     
             <p>
                 <strong>Hardware and Manufacturing:</strong> Mass around 1.5Kg consisitng of XPS Foam Cut Wing, V-tail and fin, Section of fuselage where nose is 3D printed allowing serated bits for airflow for battery - 
@@ -489,7 +489,7 @@
             new Chart(ctx, {
                 type: 'doughnut',
                 data: {
-                    labels: ['XPS & Glass Fibre', '18650 Battery', 'F405 & Servos', 'FPV & Pitot', 'Motor/ESC'],
+                    labels: ['XPS & Glass Fibre', '18650 Battery', 'F405 & Servos', 'FPV & ESP32', 'Motor/Prop'],
                     datasets: [{
                         data: [650, 450, 150, 70, 180], // Mass in grams
                         backgroundColor: [
