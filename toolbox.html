@@ -164,19 +164,11 @@
         <section id="overview">
             <h2>Project Overview</h2>
             <p>
-                This project explores the design and validation of a low-cost, lightweight ISR fixed-wing UAV incorporating a FPV vision-based click-to-track capability under strict computational, mass, and manufacturability constraints.
-                The primary objective is to demonstrate that stable target tracking and flight control can be achieved using minimal onboard processing and commercial off-the-shelf components, without reliance on high-performance 
-                embedded computers.The system integrates a lightweight vision tracker with a custom Kalman filter implemented on an ESP32 companion microcontroller, 
-                which smooths and predicts target coordinates prior to injection into the flight controller. 
+               This project demonstrates the complete mechanical engineering workflow transitioning from a conceptual 3D CAD assembly to a high precision physical product using
+                manual machining techniques while meeting specific tolerances. 
+                The objective was to manufacture a robust, interlocking toolbox based on strict engineering drawings, requiring an understanding of material properties, tool geometry, and tolerances.
             </p>     
-            <p>
-                This architecture explicitly addresses vision and communication latency, reducing aggressive control inputs that would otherwise induce excessive ESC thermal loading, 
-                actuator wear, and degraded endurance. By prioritising smooth control behaviour, the design enables the use of lighter propulsion hardware and contributes to improved flight efficiency.
-                UAV frame performance was evaluated using XFLR5 followed with manufacturing and material testing, allowing controlled assessment of CG testing with payload placement assessing impacts of vibration and mounting tests.
-                Tracking system performance was evaulated using HITL - Python OPENCV with esp32 to assess latency effects, estimator behaviour, and closed-loop coordinate accuracy response. 
-                The results demonstrate that Kalman-based prediction significantly mitigates latency-induced phase lag, improving tracking stability within the operational limits imposed by 
-                low-cost telemetry and embedded hardware.
-            </p>
+            
             <ul class="tech-tags">
                 <li>CAD/Fusion360</li>
                 <li>Lathe</li>
@@ -258,17 +250,17 @@
             </p>
                 
             <p>
-                <strong>Diagnosis and Resolution:</strong> I identified that the vibration was caused by an imbalance between the tool's rigidity and the spindle speed. 
+                <strong>Diagnosis and Resolution:</strong> Identified that the vibration was caused by an imbalance between the tool's rigidity and the spindle speed. 
                 To resolve this, I performed the following adjustments:
             </p>
             <p>
-                <strong>Reduced Spindle Speed (RPM):</strong>I lowered the RPM to move out of the resonant frequency of the setup.
+                <strong>Reduced Spindle Speed (RPM):</strong> Lowered the RPM to move out of the resonant frequency of the setup.
             </p>
             <p>
-                <strong>Adjusted Feed Rate:</strong>I increased the Feed per Tooth to ensure the cutter was "biting" into the material rather than rubbing against it, which stabilized the tool pressure.
+                <strong>Adjusted Feed Rate:</strong> Increased the Feed per Tooth to ensure the cutter was "biting" into the material rather than rubbing against it, which stabilized the tool pressure.
             </p>
             <p>
-                <strong>Increased Rigidity:</strong>I re-clamped the workpiece closer to the vise jaws to minimize the "cantilever effect" of the material.
+                <strong>Increased Rigidity:</strong> Re-clamped the workpiece closer to the vise jaws to minimize the "cantilever effect" of the material.
             </p>
 
             <h3>Final Result of Toolbox</h3>
