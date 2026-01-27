@@ -128,7 +128,8 @@
 <section>
 <h2>Project Overview</h2>
 <p>
-This project focused on the numerical design of a 500 g flying-wing UAV using a coupled nonlinear solver.
+This project focused on how accurate and efficient a custom numercial sizing method can design and converge on a simple and efficient flying wing. This is because speed and accuracy is important in 
+producing and testing UAV designs.
 Flying-wing configurations exhibit strong coupling between geometry, centre of gravity, trim, and static stability,
 making traditional spreadsheet-based sizing inefficient and error-prone.
 </p>
@@ -149,19 +150,6 @@ confirming aerodynamic efficiency and dynamic stability prior to CAD and manufac
 </section>
 
 <section>
-<h2>Why a Coupled Solver Was Required</h2>
-<p>
-Flying wings lack a horizontal tail, making pitch stability and trim highly sensitive to geometry and CG placement.
-Wing sweep, chord length, elevon deflection, and CG position cannot be selected independently.
-</p>
-<p>
-Rather than iterating manually, the aircraft was formulated as a nonlinear root-finding problem,
-allowing the solver to converge on a geometry that satisfies lift equilibrium, pitch trim,
-and static stability simultaneously.
-</p>
-</section>
-
-<section>
 <h2>Coupled Geometry and Trim Solver (Newton–Raphson)</h2>
 
 <h3>Solver Formulation</h3>
@@ -173,7 +161,7 @@ and static stability simultaneously.
 
 <div class="architecture-box">
     <pre>
-        Initial Guess → Geometry & CG Model → Aerodynamic Model → Trim & Stability Constraints → Newton Update → Converged Design
+Initial Guess → Geometry & CG Model → Aerodynamic Model → Trim & Stability Constraints → Newton Update → Converged Design
     </pre>
 
 </div>
@@ -190,7 +178,7 @@ avoiding over-reflexed or marginally stable solutions common in manual design wo
 <li>Root chord: <strong>21.8 cm</strong></li>
 <li>Span: <strong>97.5 cm</strong></li>
 <li>Sweep angle: <strong>13.4°</strong></li>
-<li>Elevon trim: <strong>−1.5°</strong></li>
+<li>Elevon trim: <strong>−3°</strong></li>
 <li>Static margin: <strong>~8–10%</strong></li>
 </ul>
 <p>
@@ -228,33 +216,29 @@ indicating a stable and controllable pitch response near cruise conditions.
 </section>
 
 <section>
-<h2>Manufacturing & Physical Realisation</h2>
+<h2>Manufacturing</h2>
 <p>
 The solver-derived geometry was translated into CAD and manufactured using
 XPS foam with fibreglass skin reinforcement.
 Component placement followed the CG location predicted by the numerical model,
 minimising the need for ballast or post-build trimming.
 </p>
+<h2>Inital Manufactured Prototype</h2>
+<div class="slideshow-container">
+    <div class="mySlides mySlides2"><img src="images/uav/overall_mass.png"></div>
+    <div class="mySlides mySlides2"><img src="images/uav/Centrepressure.png"></div>
+    <div class="mySlides mySlides2"><img src="images/uav/Cm_vs_alpha.png"></div>
+    <a class="prev" onclick="plusSlides(-1, 1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1, 1)">&#10095;</a>
+</div>
+<p>
+    Inital Prototype 
+</p>
 </section>
 
-<section>
-<h2>Key Design Insights</h2>
-<ul>
-<li>Strong coupling exists between sweep, CG, and trim in tailless aircraft</li>
-<li>Small CG shifts significantly affect required control deflection</li>
-<li>Numerical solvers dramatically reduce iteration time in conceptual design</li>
-</ul>
-</section>
 
-<section>
-<h2>Future Work</h2>
-<ul>
-<li>Drag and endurance optimisation within the solver</li>
-<li>CG envelope and mass-variation analysis</li>
-<li>Integration with flight control law design</li>
-<li>Extension to eVTOL conceptual sizing problems</li>
-</ul>
-</section>
+
+
 
 </div>
 
