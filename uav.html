@@ -229,11 +229,13 @@
             </ul>
         </section>
         
-        <section id="Challenges & Trade-offs">
+        <section id="challenges-trade-offs">
             <h2>Performance of Final Design</h2>
             <div class="chart-container">
-        <canvas id="massChart"></canvas>
+                <div class="chart-title">Mass Budget (1.5kg)</div>
+                <canvas id="massChart"></canvas>
             </div>
+        </section>
     
             <p>
                 <strong>Hardware and Manufacturing:</strong> Mass around 1.5Kg consisitng of XPS Foam Cut Wing, V-tail and fin, Section of fuselage where nose is 3D printed allowing serated bits for airflow for battery - 
@@ -450,10 +452,11 @@
     </footer>
 
     <script>
+    /* --- Slideshow Logic --- */
     let slideIndex = [1, 1, 1]; 
-    // Just use the unique class names here
     let slideId = ["mySlides1", "mySlides2", "mySlides3"];
 
+    // Initialize slides
     for (let i = 0; i < slideId.length; i++) {
         showSlides(1, i);
     }
@@ -475,10 +478,47 @@
         }
         x[slideIndex[no]-1].style.display = "block";  
     }
-        const ctx = document.getElementById('massChart').getContext('2d');
-        new Chart(ctx, { 
-            /* ... all that chart data code from before ... */ 
-        });
+
+    /* --- Mass Budget Chart Logic --- */
+    // This waits for the page to be fully ready so the chart isn't blank
+    document.addEventListener("DOMContentLoaded", function() {
+        const canvasElement = document.getElementById('massChart');
+        
+        if (canvasElement) {
+            const ctx = canvasElement.getContext('2d');
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['XPS & Glass Fibre', '18650 Battery', 'F405 & Servos', 'FPV & Pitot', 'Motor/ESC'],
+                    datasets: [{
+                        data: [650, 450, 150, 70, 180], // Mass in grams
+                        backgroundColor: [
+                            '#2c3e50', // Navy
+                            '#3498db', // Blue
+                            '#95a5a6', // Silver
+                            '#e74c3c', // Red
+                            '#27ae60'  // Green
+                        ],
+                        borderWidth: 2,
+                        borderColor: '#ffffff'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                font: { family: 'Courier New', size: 12 },
+                                color: '#2c3e50'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    });
 </script>
 
 </body>
