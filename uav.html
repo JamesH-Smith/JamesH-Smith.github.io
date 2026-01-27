@@ -230,7 +230,7 @@
         </section>
         
         <section id="challenges-trade-offs">
-            <h2>Performance of Final Design</h2>
+            <h2>Stats of Final Design</h2>
             <div class="chart-container">
                 <div class="chart-title">Mass Budget (1.5kg)</div>
                 <canvas id="massChart"></canvas>
@@ -238,13 +238,21 @@
         
     
             <p>
-                <strong>Hardware and Manufacturing:</strong> Mass around 1.5Kg consisitng of XPS Foam Cut Wing, V-tail and fin, Section of fuselage where nose is 3D printed allowing serated bits for airflow for battery - 
-                being an 18650MA, flight controller being speedybee-F405, as well as pitot tube and Analog FPV Camera,2-5g servos,  , Wing Span 1.8m, . the XPS fuselage will be wrapped 25g, glass fibre to help with surface finish
-                allowing for better aerodynamic efficiency.
+                <strong>Hardware and Manufacturing:</strong> The UAV has a mass of approximately 1.5 kg with a 1.6 m wingspan, AR of 8.86, constructed from an XPS foam wing and fuselage with a V-tail configuration. 
+                The 3D-printed nose section incorporates serrated airflow features for passive cooling of the 18650 Li-ion battery. Avionics include a SpeedyBee F405 flight controller, 
+                pitot tube, analogue FPV camera, and 2–5 g micro-servos. The fuselage is wrapped in 25 g/m² fibreglass to improve surface finish, structural stiffness, and aerodynamic efficiency.
             </p>
             <p>
-                <strong>Communication Range and Latency:</strong> Drone: 5.8 GHz analog FPV cam + 400 mW VTX, Omnidirectional antenna, ESP32 + LoRa SX1276 with Ground: Directional patch antenna for FPV footage sent by telemetry
+                <strong>Communication Range and Latency:</strong>
             </p>
+            <p>
+                <strong>Drone:</strong>5.8 GHz analog FPV cam + 400 mW VTX, Omnidirectional antenna, ESP32 + LoRa SX1276
+            </p>
+            <p>
+                <strong>Ground:</strong> Directional patch antenna for FPV footage sent by telemetry
+            </p>
+            
+                
             <p> 
                 <strong> ->Reliable low-latency operation: 1.5Km - 2.5Km</strong>
             </p>
@@ -395,10 +403,20 @@
 
             <h3>Discussion</h3>
             <p>
-                During testing, we analyzed the filter's performance regarding <strong>covariance tuning</strong>. By adjusting the 
-                Process Noise (Q) and Measurement Noise (R), we were able to achieve a balance between "responsiveness" and "smoothness." 
-                The discussion further explores how the Kalman filter maintains a target lock even when the OpenCV tracker briefly 
-                loses the object during a rapid banked turn of the UAV.
+               The Kalman filter was tuned by adjusting the process noise (Q) and measurement noise
+                (R) to balance tracking responsiveness with output smoothness. This tuning was critical to prevent noisy vision measurements from directly driving aggressive control inputs.
+            </p>
+            <p>
+                The results show an <strong>18.0% reduction</strong> in spatial jitter compared to the raw tracking signal. This improvement is most noticeable at 80–100 m, where atmospheric effects and 
+                pixel noise become dominant. 
+                Setting R relatively high prevented the filter from reacting to every pixel fluctuation. As seen in the Raw vs Kalman plot,
+                measurement spikes do not cause oscillations, and the estimate settles cleanly. This leads to smoother control commands, reducing ESC switching stress, 
+                thermal buildup, and unnecessary battery current draw.
+            </p>
+            <p>
+                The Q value was tuned to allow the system to respond quickly to real target movement. When Q was too low, the estimate lagged behind fast lateral motion.
+                When Q was too high, noise passed through with little benefit. The final tuning provided stable tracking while 
+                <strong>improving thermal efficiency, component lifespan, and overall flight endurance.</strong>
             </p>
         </section>
 
@@ -426,22 +444,21 @@
                 </div>
         
                 <figcaption class="result-caption">
-                    Figures: Mass distribution; Pressure distribution over the wing surface at cruise velocity (20m/s); $C_m$ vs $\alpha$ displaying trim AoA.
+                    Figures: Mass distribution; Pressure distribution over the wing surface at cruise velocity (20m/s); displaying trim AoA.
                 </figcaption>
             </figure>
         
             <h3>Aerodynamic Efficiency</h3>
             <p>
-                The airframe geometry was optimized for high <strong>lift-to-drag (L/D) ratios</strong> to maximize flight endurance. 
-                Using Fusion 360's simulation tools, the wing's airfoil section was selected to provide stable lift at the low Reynolds numbers 
-                typical of small-scale UAV operations, ensuring efficient ISR loitering.
+                The airframe geometry was analysed using XFLR5 and was optimised for high <strong>lift-to-drag (L/D) ratio</strong> to maximize flight endurance. 
+                UAV at trim(4 Degrees) and at cruise velocity of 20m/s, the drone has a L/D ratio of <strong>22.836</strong> indicating stable cruise with minimal power consumption
+                
             </p>
             
             <h3>Stability Analysis</h3>
             <p>
-                Static stability was a primary design requirement. The <strong>Center of Gravity (CG)</strong> was precisely 
-                calculated relative to the Mean Aerodynamic Chord (MAC) to ensure a positive static margin. 
-                This prevents pitch-instability and allows the Kalman filter to maintain smoother tracking during atmospheric disturbances.
+                Static Margin was calculated to be ~ 8.2% with <strong>MAC = 0.183m, XNP = 0.259m, XCG = 0.244m</strong>
+                This prevents pitch-instability and allows the Kalman filter to maintain smoother tracking during disturbances.
             </p>
         </section>
     </div>
@@ -491,7 +508,7 @@
                 data: {
                     labels: ['XPS & Glass Fibre', '18650 Battery', 'F405 & Servos', 'FPV & ESP32', 'Motor/Prop'],
                     datasets: [{
-                        data: [650, 450, 150, 70, 180], // Mass in grams
+                        data: [650g, 450g, 150g, 70g, 180g], // Mass in grams
                         backgroundColor: [
                             '#2c3e50', // Navy
                             '#3498db', // Blue
