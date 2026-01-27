@@ -154,7 +154,7 @@
 
     <header>
         <h1>James H Smith</h1>
-        <p>Hand Crafted Tool Box</p>
+        <p>Precision Engineered Toolbox – Design to Fabrication</p>
     </header>
 
     <div class="container">
@@ -195,16 +195,15 @@
             <ul class="tech-tags">
                 <li>CAD/Fusion360</li>
                 <li>Lathe</li>
-                <li>OpenCV</li>
-                <li>Python</li>
-                <li>ESP32</li>
-                <li>Kalman Filter</li>
-                <li>MAVLink</li>
+                <li>Vertical Milling</li>
+                <li>Drill press</li>
+                <li>Benchwork</li>
+                <li>Metrology</li>
             </ul>
         </section>
         
         <section id="Challenges & Trade-offs">
-            <h2>Performance of Final Design</h2>
+            <h2>Manufacture Sequence</h2>
             <p>
                 <strong>Hardware and Manufacturing:</strong> Mass around 1.5Kg consisitng of XPS Foam Cut Wing, V-tail and fin, Section of fuselage where nose is 3D printed allowing serated bits for airflow for battery - 
                 being an 18650MA, flight controller being speedybee-F405, as well as pitot tube and Analog FPV Camera,2-5g servos,  , Wing Span 1.8m, . the XPS fuselage will be wrapped 25g, glass fibre to help with surface finish
@@ -229,6 +228,21 @@
                 One of the core motivations for the onboard Kalman filter is to mitigate this latency through prediction, extending the usable operating envelope before instability becomes dominant.
 
             </p>
+            <div class="slideshow-container">
+            <div class="mySlides mySlides1">
+                <div class="numbertext">1 / 2</div>
+                <img src="images/toolbox/Toolbox2.png">
+            </div>
+
+            <div class="mySlides mySlides1">
+                <div class="numbertext">2 / 2</div>
+                <img src="images/toolbox/Toolbox1.png">
+            </div>
+
+
+            <a class="prev" onclick="plusSlides(-1, 0)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1, 0)">&#10095;</a>
+        </div>
         </section>
         
         <section id="filter-analysis">
@@ -267,6 +281,49 @@
                 The discussion further explores how the Kalman filter maintains a target lock even when the OpenCV tracker briefly 
                 loses the object during a rapid banked turn of the UAV.
             </p>
+        </section>
+
+        <section id="Challenges & Trade-offs">
+            <h2>Manufacture Sequence</h2>
+            <p>
+                <strong>Hardware and Manufacturing:</strong> Mass around 1.5Kg consisitng of XPS Foam Cut Wing, V-tail and fin, Section of fuselage where nose is 3D printed allowing serated bits for airflow for battery - 
+                being an 18650MA, flight controller being speedybee-F405, as well as pitot tube and Analog FPV Camera,2-5g servos,  , Wing Span 1.8m, . the XPS fuselage will be wrapped 25g, glass fibre to help with surface finish
+                allowing for better aerodynamic efficiency.
+            </p>
+            <p>
+                <strong>Communication Range and Latency:</strong> Drone: 5.8 GHz analog FPV cam + 400 mW VTX, Omnidirectional antenna, ESP32 + LoRa SX1276 with Ground: Directional patch antenna for FPV footage sent by telemetry
+            </p>
+            <p> 
+                <strong> ->Reliable low-latency operation: 1.5Km - 2.5Km</strong>
+            </p>
+            <p>
+                <strong> ->Degraded performance (increased packet delay and FPV jitter): 2.5Km - 5Km </strong>
+            </p>
+            <p>
+                <strong> ->End-End latency Approximate: 35-85ms </strong>
+            </p>
+    
+            <p>
+                At extended distances, FPV video becomes the limiter, increased transmission delay and packet loss introduce phase lag between vision measurements and aircraft response, 
+                which directly degrades closed-loop tracking performance. 
+                One of the core motivations for the onboard Kalman filter is to mitigate this latency through prediction, extending the usable operating envelope before instability becomes dominant.
+
+            </p>
+            <div class="slideshow-container">
+            <div class="mySlides mySlides1">
+                <div class="numbertext">1 / 2</div>
+                <img src="images/toolbox/Toolbox2.png">
+            </div>
+
+            <div class="mySlides mySlides1">
+                <div class="numbertext">2 / 2</div>
+                <img src="images/toolbox/Toolbox1.png">
+            </div>
+
+
+            <a class="prev" onclick="plusSlides(-1, 0)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1, 0)">&#10095;</a>
+        </div>
         </section>
 
     <footer>
