@@ -188,7 +188,7 @@ pitch stability, and control authority suitable for low-Re UAV operation.
 </section>
 
 <section>
-<h2>Aerodynamic & Stability Validation (XFLR5)</h2>
+<h2>Solvers Conditions Analysis (XFLR5)</h2>
 
 <div class="slideshow-container">
     <div class="mySlides mySlides2"><img src="images/uav/overall_mass.png"></div>
@@ -197,22 +197,44 @@ pitch stability, and control authority suitable for low-Re UAV operation.
     <a class="prev" onclick="plusSlides(-1, 1)">&#10094;</a>
     <a class="next" onclick="plusSlides(1, 1)">&#10095;</a>
 </div>
+    <p> 
+        Figures above represent the Static Validation of the flying wing developed by the Newton-Raphson coverged solutions.
+    </p>
 
 <h3>Static Performance</h3>
 <p>
-XFLR5 analysis confirmed peak lift-to-drag ratios of approximately 27–30,
-with the trimmed operating point lying close to maximum efficiency.
+XFLR5 analysis confirmed peak lift-to-drag ratios of approximately 13-17 operating around trim angle(2 degrees),
+with the trimmed operating point lying close to maximum efficiency before stall which is around 5.5 degrees onward.
 This validates the solver’s ability to produce an efficient,
 non-over-reflexed flying-wing configuration.
 </p>
 
-<h3>Dynamic Stability</h3>
+    <h2>Dynamic Stability Analysis</h2>
+    <div class="slideshow-container">
+    <div class="mySlides mySlides3"><img src="images/uav/overall_mass.png"></div>
+    <div class="mySlides mySlides3"><img src="images/uav/Centrepressure.png"></div>
+    <a class="prev" onclick="plusSlides(-1, 2)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1, 2)">&#10095;</a>
+</div>
+     <p> 
+        Figures above represent the Dynamic Analysis of the flying wing developed by the Newton-Raphson coverged solutions.
+    </p>
+    
+
+<h3>Phugoid Damping Analysis</h3>
 <p>
-Dynamic analysis showed a weakly damped phugoid mode,
-typical of flying-wing aircraft,
-and a well-damped short-period mode (ζ ≈ 0.5),
-indicating a stable and controllable pitch response near cruise conditions.
+The phugoid damping plot shows a classic long-period oscillation profile, with damping significantly higher at low speeds 5-6m/s before dropping sharply as velocity increases. 
+    The design reaches a minimum damping state near the cruise speed of 12m/s, indicating a stable but lightly damped "pitching" mode that is typical for high-aspect-ratio gliders. 
+    This suggests the airframe will naturally return to trimmed flight after a pitch disturbance, though it may require minor pilot or FC intervention to settle quickly at higher speeds.
 </p>
+    
+<h3>Short Period Damping Ratio Analysis</h3>
+    <p>
+        The Short Period Damping Ratio remains consistently between 0.4 and 0.6 across the operational speed range, which is an excellent result for a 0.972m wing span. A damping ratio in this range 
+        indicates a "deadbeat" response where pitch disturbances are suppressed rapidly without excessive oscillation. 
+        This level of stability ensures that the airframe will feel "locked in" and responsive during maneuvers, providing a stable platform.
+    </p>
+    
 </section>
 
 <section>
@@ -225,11 +247,11 @@ minimising the need for ballast or post-build trimming.
 </p>
 <h2>Inital Manufactured Prototype</h2>
 <div class="slideshow-container">
-    <div class="mySlides mySlides3"><img src="images/uav/XPS_W2.png"></div>
-    <div class="mySlides mySlides3"><img src="images/uav/XPS_Wing.png"></div>
+    <div class="mySlides mySlides4"><img src="images/uav/XPS_W2.png"></div>
+    <div class="mySlides mySlides4"><img src="images/uav/XPS_Wing.png"></div>
     
-    <a class="prev" onclick="plusSlides(-1, 2)">&#10094;</a>
-    <a class="next" onclick="plusSlides(1, 2)">&#10095;</a>
+    <a class="prev" onclick="plusSlides(-1, 3)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1, 3)">&#10095;</a>
 </div>
 <p>
     Inital Prototype 
@@ -247,8 +269,8 @@ minimising the need for ballast or post-build trimming.
 </footer>
 
 <script>
-let slideIndex = [1,1,1];
-let slideId = ["mySlides1","mySlides2","mySlides3"];
+let slideIndex = [1,1,1,1];
+let slideId = ["mySlides1","mySlides2","mySlides3","mySlides4"];
 function plusSlides(n,no){showSlides(slideIndex[no]+=n,no);}
 function showSlides(n,no){
 let i,x=document.getElementsByClassName(slideId[no]);
