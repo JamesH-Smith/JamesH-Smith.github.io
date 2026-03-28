@@ -49,11 +49,42 @@
             font-weight: bold;
         }
 
+        /* --- NEW FLEX GRID STYLES --- */
+        .uav-grid-container {
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+            margin: 20px 0;
+        }
+
+        /* This makes it stack on mobile */
+        @media (max-width: 768px) {
+            .uav-grid-container {
+                flex-direction: column;
+            }
+        }
+
+        .uav-sizing-main { flex: 2; }
+        .uav-med-stack { 
+            flex: 1; 
+            display: flex; 
+            flex-direction: column; 
+            gap: 10px; 
+        }
+
+        .uav-img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            display: block;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
         /* --- SLIDESHOW STYLES --- */
         .slideshow-container {
             position: relative;
             max-width: 100%;
-            height: 500px; /* Matching the previous image size */
+            height: 500px; 
             margin-bottom: 2rem;
             border-radius: 8px;
             overflow: hidden;
@@ -68,10 +99,9 @@
         .mySlides img {
             width: 100%;
             height: 100%;
-            object-fit: contain; /* Shows full image without cropping */
+            object-fit: contain; 
         }
 
-        /* Next & previous buttons */
         .prev, .next {
             cursor: pointer;
             position: absolute;
@@ -88,16 +118,9 @@
             background-color: rgba(0,0,0,0.4);
         }
 
-        .next {
-            right: 0;
-            border-radius: 3px 0 0 3px;
-        }
+        .next { right: 0; border-radius: 3px 0 0 3px; }
+        .prev:hover, .next:hover { background-color: rgba(44, 62, 80, 0.9); }
 
-        .prev:hover, .next:hover {
-            background-color: rgba(44, 62, 80, 0.9);
-        }
-
-        /* Number text (1/3 etc) */
         .numbertext {
             color: #f2f2f2;
             font-size: 12px;
@@ -106,7 +129,6 @@
             top: 0;
         }
 
-        /* --- TECH TAGS & FOOTER --- */
         .tech-tags {
             display: flex;
             flex-wrap: wrap;
@@ -127,27 +149,6 @@
             padding: 2rem;
             color: #777;
         }
-        
-        /* Styling for the System Architecture Diagram */
-        .architecture-box {
-            background-color: #2c3e50; /* Navy background to match header */
-            color: #ecf0f1;           /* Light grey text */
-            padding: 20px;
-            border-radius: 6px;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 0.9rem;
-            line-height: 1.2;
-            overflow-x: auto;         /* Allows scrolling if screen is too narrow */
-            border-left: 5px solid #3498db; /* Blue accent bar */
-            margin: 20px 0;
-        }
-        
-        .architecture-box pre {
-            margin: 0;
-            white-space: pre;         /* Keeps your exact spacing */
-        }
-
-        
     </style>
 </head>
 <body>
@@ -159,164 +160,119 @@
 
     <div class="container">
         <a href="index.html" class="back-link">← Back to Portfolio</a>
-        
 
         <section id="overview">
             <h2>Project Overview</h2>
             <p>
-               This project demonstrates the complete mechanical engineering workflow transitioning from a conceptual 3D CAD assembly to a high precision physical product using
-                manual machining techniques while meeting specific tolerances. 
-                The objective was to manufacture a robust, interlocking toolbox based on strict engineering drawings, requiring an understanding of material properties, tool geometry, and tolerances.
+               This project demonstrates the complete mechanical engineering workflow transitioning from a conceptual 3D CAD assembly to a high precision physical product.
             </p>     
-            
             <ul class="tech-tags">
                 <li>CAD/Fusion360</li>
-                <li>Lathe</li>
-                <li>Vertical Milling</li>
-                <li>Drill press</li>
-                <li>Benchwork</li>
-                <li>Metrology</li>
+                <li>Aerodynamics</li>
+                <li>XFLR5</li>
+                <li>Stability Analysis</li>
+                <li>Prototyping</li>
             </ul>
         </section>
         
-        
-        <section id="filter-analysis">
+        <section id="rendered-design">
             <h2>UAV Preliminary Design - Rendered</h2>
-    
-            <figure class="result-figure" style="margin-top: 0;"> 
-                <div class="slideshow-container">
-                    <div class="mySlides mySlides3">
-                        <div class="numbertext">1 / 3</div>
-                        <img src="images/toolbox/MUAV2.png">
-                    </div>
-            
-                    <div class="mySlides mySlides3">
-                        <div class="numbertext">2 / 3</div>
-                        <img src="images/toolbox/MedicalUAV.png">
-                    </div>
-            
-                    <div class="mySlides mySlides3">
-                        <div class="numbertext">3 / 3</div>
-                        <img src="images/toolbox/MUAV3.png"> 
-                    </div>
-            
-                    <a class="prev" onclick="plusSlides(-1, 2)">&#10094;</a>
-                    <a class="next" onclick="plusSlides(1, 2)">&#10095;</a>
+            <div class="slideshow-container">
+                <div class="mySlides mySlides3">
+                    <div class="numbertext">1 / 3</div>
+                    <img src="images/toolbox/MUAV2.png">
                 </div>
-            
-              
+                <div class="mySlides mySlides3">
+                    <div class="numbertext">2 / 3</div>
+                    <img src="images/toolbox/MedicalUAV.png">
+                </div>
+                <div class="mySlides mySlides3">
+                    <div class="numbertext">3 / 3</div>
+                    <img src="images/toolbox/MUAV3.png"> 
+                </div>
+                <a class="prev" onclick="plusSlides(-1, 2)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1, 2)">&#10095;</a>
+            </div>
         </section>
 
-        <section id="Challenges & Trade-offs">
+        <section id="sizing-analysis">
             <h2>Constraint Diagram: Design Choice</h2>
-            <img src="images/toolbox/CD.png">
+            <img src="images/toolbox/CD.png" style="width:100%; border-radius:8px; margin-bottom:15px;">
             <p>
-                <strong>Chosen Thrust to Weight Ratio:</strong>  W/S ≈ 40, T/W ≈ 1.0, Reynold's Number ≈ 180,000 ≈ 15m/s​
-                V,Stall = 7.71m/s
+                <strong>Chosen Thrust to Weight Ratio:</strong> W/S ≈ 40, T/W ≈ 1.0, Reynold's Number ≈ 180,000. V,Stall = 7.71m/s
             </p>
-            <p>
-                <strong>Manual Milling Operations::</strong> Using a Vertical Milling Machine, I squared the stock to within a 5mm tolerance. 
-                Key skills included using a Dial Test Indicator to "tram" the mill head and an Edge Finder to establish a precise (0,0) datum for all subsequent pocketing and drilling operations.
-            </p>
-           
 
             <h2>UAV Main Wing and Tail Sizing</h2>
-                <p>
-                    Aircraft was sized using wing loading to calculate wing area, where then minimising induced drag influenced the choice of the aspect ratio and therefore the rest of the UAV. 
-                    Iterations and Aerodynamic performance was calculated using XFLR5 and handwritten equations.
-                </p>
-                
-                <div style="display: flex; gap: 15px; align-items: flex-start;">
-                    
-                    <div style="flex: 2;">
-                        <img src="images/toolbox/Sizing.png" alt="UAV Sizing Analysis" style="width: 100%; height: auto; border-radius: 5px;">
-                    </div>
-                
-                    <div style="flex: 1; display: flex; flex-direction: column; gap: 10px;">
-                        <img src="images/toolbox/MEDUAV1.png" alt="MEDUAV Iteration 1" style="width: 100%; height: auto; border-radius: 5px;">
-                        <img src="images/toolbox/MEDUAV2.png" alt="MEDUAV Iteration 2" style="width: 100%; height: auto; border-radius: 5px;">
-                        <img src="images/toolbox/MEDUAV3.png" alt="MEDUAV Iteration 3" style="width: 100%; height: auto; border-radius: 5px;">
-                    </div>
-            
-                
             <p>
-                <strong>Tooling Selection:</strong>Choosing appropriate Carbide vs. HSS (High-Speed Steel) cutters based on the material's surface feet per minute (SFM) requirements.
+                Aircraft was sized using wing loading to calculate wing area. Iterations and Aerodynamic performance calculated using XFLR5.
             </p>
+            
+            <div class="uav-grid-container">
+                <div class="uav-sizing-main">
+                    <img src="images/toolbox/Sizing.png" alt="UAV Sizing Analysis" class="uav-img">
+                </div>
+                <div class="uav-med-stack">
+                    <img src="images/toolbox/MEDUAV1.png" alt="MEDUAV 1" class="uav-img">
+                    <img src="images/toolbox/MEDUAV2.png" alt="MEDUAV 2" class="uav-img">
+                    <img src="images/toolbox/MEDUAV3.png" alt="MEDUAV 3" class="uav-img">
+                </div>
+            </div>
             <h2>UAV Control Surface Sizing</h2>
-            <img src="images/toolbox/Csizing.png">
+            <img src="images/toolbox/Csizing.png" style="width:100%; margin: 15px 0;">
             
-            <h2> Stability Analysis </h2>
-            <img src="images/toolbox/Trimanalysis.png">
-            
-            <h2> XFLR5 Airfoil & Wing Performance Analysis </h2>
-            
-                
-           
-
-            <h2>Preliminary Design: Internal Components CAD</h2>
-            
-            <div class="slideshow-container">
-            <div class="mySlides mySlides1">
-                <div class="numbertext">1 / 3</div>
-                <img src="images/toolbox/IN3.png">
-            </div>
-
-            <div class="mySlides mySlides1">
-                <div class="numbertext">2 / 3</div>
-                <img src="images/toolbox/IN2.png">
-            </div>
-                <div class="mySlides mySlides1">
-                <div class="numbertext">3 / 3</div>
-                <img src="images/toolbox/IN1.png">
-            </div>
-                
-
-
-            <a class="prev" onclick="plusSlides(-1, 0)">&#10094;</a>
-            <a class="next" onclick="plusSlides(1, 0)">&#10095;</a>
-        </div>
+            <h2>Stability Analysis</h2>
+            <img src="images/toolbox/Trimanalysis.png" style="width:100%; margin: 15px 0;">
         </section>
 
+        <section id="internal-cad">
+            <h2>Preliminary Design: Internal Components CAD</h2>
+            <div class="slideshow-container">
+                <div class="mySlides mySlides1">
+                    <div class="numbertext">1 / 3</div>
+                    <img src="images/toolbox/IN3.png">
+                </div>
+                <div class="mySlides mySlides1">
+                    <div class="numbertext">2 / 3</div>
+                    <img src="images/toolbox/IN2.png">
+                </div>
+                <div class="mySlides mySlides1">
+                    <div class="numbertext">3 / 3</div>
+                    <img src="images/toolbox/IN1.png">
+                </div>
+                <a class="prev" onclick="plusSlides(-1, 0)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1, 0)">&#10095;</a>
+            </div>
+        </section>
 
-        <h2>Inital Prototype of Medical UAV</h2>
-        
-</div>
-
-
-
-    
-
-    <footer>
-        <p>&copy; 2025 James H. Smith | UAV Engineering Project</p>
+    </div> <footer>
+        <p>&copy; 2026 James H. Smith | UAV Engineering Project</p>
     </footer>
 
     <script>
-    let slideIndex = [1, 1, 1, 1]; 
-    // Just use the unique class names here
-    let slideId = ["mySlides1", "mySlides2", "mySlides3"];
+        let slideIndex = [1, 1, 1, 1]; 
+        let slideId = ["mySlides1", "mySlides2", "mySlides3"];
 
-    for (let i = 0; i < slideId.length; i++) {
-        showSlides(1, i);
-    }
-
-    function plusSlides(n, no) {
-        showSlides(slideIndex[no] += n, no);
-    }
-
-    function showSlides(n, no) {
-        let i;
-        let x = document.getElementsByClassName(slideId[no]);
-        if (x.length === 0) return; 
-
-        if (n > x.length) { slideIndex[no] = 1 }    
-        if (n < 1) { slideIndex[no] = x.length }
-        
-        for (i = 0; i < x.length; i++) {
-            x[i].style.display = "none";  
+        for (let i = 0; i < slideId.length; i++) {
+            showSlides(1, i);
         }
-        x[slideIndex[no]-1].style.display = "block";  
-    }
-</script>
 
+        function plusSlides(n, no) {
+            showSlides(slideIndex[no] += n, no);
+        }
+
+        function showSlides(n, no) {
+            let i;
+            let x = document.getElementsByClassName(slideId[no]);
+            if (x.length === 0) return; 
+
+            if (n > x.length) { slideIndex[no] = 1 }    
+            if (n < 1) { slideIndex[no] = x.length }
+            
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";  
+            }
+            x[slideIndex[no]-1].style.display = "block";  
+        }
+    </script>
 </body>
 </html>
