@@ -162,7 +162,7 @@
         <a href="index.html" class="back-link">← Back to Portfolio</a>
 
         <section id="overview">
-            <h2>Project Overview</h2>
+            <h2>Medical UAV Project Overview</h2>
             <p>The mission objective is the development of a high-stability, autonomous medical delivery UAV optimized for rapid, reliable transport of a 150g payload within a 100m waypoint circuit. 
                 To maximize pilot handling marks and airworthiness, the design prioritizes static and dynamic stability over maneuverability, ensuring predictable flight characteristics in both manual and autonomous modes. 
                 The airframe features a sub-2m wingspan—utilizing a two-piece split-wing design for enhanced transportability—and a low wing loading profile to facilitate short-field take-offs and landings within a 5m grass strip.
@@ -216,7 +216,7 @@
             
             <div class="uav-grid-container">
                 <div class="uav-sizing-main">
-                    <img src="images/toolbox/Sizing.png" alt="UAV Sizing Analysis" class="uav-img">
+                    <img src="images/toolbox/Sizing.png">
                 </div>
                 <div class="uav-med-stack">
                     <img src="images/toolbox/MEDUAV1.png" alt="MEDUAV 1" class="uav-img">
@@ -235,8 +235,32 @@
                 <div class="uav-med-stack">
                     <img src="images/toolbox/State.png" alt="MEDUAV 1" class="uav-img">
                     <img src="images/toolbox/Dynamic.png" alt="MEDUAV 2" class="uav-img">
+                    <img src="images/toolbox/CLvA.png" alt="MEDUAV 3" class="uav-img">
                 </div>
             </div>
+
+            <p>
+                <strong>Aerodynamic Stability and Trim Analysis:</strong>
+                The longitudinal trim analysis indicates a Neutral Trim at an Angle of Attack of 3.0° with zero elevator deflection. 
+                The Pitch Moment Coefficient vs. alpha plot demonstrates a strong negative slope ~ 0.771/rad, 
+                confirming that the aircraft possesses inherent longitudinal static stability; any upward pitch disturbance will naturally generate a restoring nose-down moment.
+                With a calculated Aerodynamic Static Margin (SM) of 15.1%, the design strikes an ideal balance between stability and control authority, 
+                ensuring the aircraft is not overly sluggish to pilot inputs while remaining robust against center-of-gravity (CG) shifts, where a +/- 5mm shift only alters the SM by +/- 2.8%.
+            </p>
+            <p>
+                <strong>Flight Envelope and Performance Metrics</strong>
+                Data exported from XFLR5 reveals a highly efficient lift profile, with a Wing Lift Slope of 5.10 /rad and a stall angle of 12°.
+                During the critical cruise phase at 15 m/s, the UAV maintains a CL of 0.47 at the neutral 3.0° AoA,
+                providing a generous 9.0° margin to stall. Even at the lower speeds required for take-off (10.5 m/s), the aircraft operates safely at an AoA of 7.8°, 
+                leaving a 4.2° buffer before flow separation.
+            </p>
+            <p>
+                <strong>Dynamic Stability Verification</strong>
+                The dynamic mode analysis confirms that all primary flight modes—Short Period, Phugoid, Dutch Roll, and Spiral Mode—are classified as Stable. Notably:
+                The Short Period mode is heavily damped (Damping Ratio: 0.92), meaning pitch oscillations from gusts will dissipate almost instantly in 0.74s.
+                The Phugoid mode, while showing a lower damping ratio of 0.05, remains stable with a manageable oscillation period, 
+                ensuring long-term energy exchange between altitude and airspeed is predictable for the pilot or autonomous controller.
+            </p>
             
         </section>
 
