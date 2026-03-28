@@ -229,14 +229,17 @@
             
             <h2>Stability Analysis</h2>
             <div class="uav-grid-container">
-                <div class="uav-sizing-main">
-                    <img src="images/toolbox/Trimanalysis.png">
-                </div>
-                <div class="uav-med-stack">
-                    <img src="images/toolbox/State.png" alt="MEDUAV 1" class="uav-img">
-                    <img src="images/toolbox/Dynamic.png" alt="MEDUAV 2" class="uav-img">
-                    <img src="images/toolbox/CLvA.png" alt="MEDUAV 3" class="uav-img">
-                </div>
+    
+            <div style="flex: 1.2; display: flex; flex-direction: column; gap: 10px;">
+                <img src="images/toolbox/Trimanalysis.png" alt="Longitudinal Trim Analysis" class="uav-img">
+                <img src="images/toolbox/State.png" alt="Static Stability Data" class="uav-img">
+                <img src="images/toolbox/Dynamic.png" alt="Dynamic Stability Modes" class="uav-img">
+            </div>
+        
+            <div style="flex: 1;">
+                <img src="images/toolbox/CLvA.png" alt="CL vs Alpha Performance" class="uav-img">
+            </div>
+        
             </div>
 
             <p>
@@ -282,6 +285,23 @@
                 <a class="prev" onclick="plusSlides(-1, 0)">&#10094;</a>
                 <a class="next" onclick="plusSlides(1, 0)">&#10095;</a>
             </div>
+
+            <h2>Internal Layout & Manufacturing</h2>
+    <h3>Component Integration</h3>
+    <p>
+        The internal architecture features a modular clip-mounting system for the battery and payload. 
+        This allows for real-time shifting of components to adjust the <strong>Center of Gravity (CG)</strong>, 
+        accounting for potential aerodynamic uncertainties. The system utilizes four servos for independent 
+        control of the right aileron, rudder, and elevator.
+    </p>
+
+    <h3>Material Selection & Weight Optimization</h3>
+    <p>
+        With an estimated weight of <strong>900g</strong>, the UAV utilizes a vacuum-formed 1mm PETG fuselage 
+        skin to minimize parasitic drag. Structural loads are carried by dual carbon fiber spars. 
+        The wings and tail are constructed from 2mm plywood with a lightweight film wrap, while 
+        <strong>PLA-lite</strong> is used for 3D-printing the aerodynamic cones, winglets, and control surfaces.
+    </p>
         </section>
 
     </div> <footer>
