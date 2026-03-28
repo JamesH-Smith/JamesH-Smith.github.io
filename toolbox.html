@@ -154,7 +154,7 @@
 
     <header>
         <h1>James H Smith</h1>
-        <p>Precision Engineered Toolbox – Design to Fabrication</p>
+        <p>Medical Unmanned Aerial Vehicle – Preliminary Design</p>
     </header>
 
     <div class="container">
@@ -181,7 +181,7 @@
         
         
         <section id="filter-analysis">
-            <h2>CAD Model</h2>
+            <h2>UAV Preliminary Design - Rendered</h2>
     
             <figure class="result-figure" style="margin-top: 0;"> 
                 <div class="slideshow-container">
@@ -204,66 +204,38 @@
                     <a class="next" onclick="plusSlides(1, 2)">&#10095;</a>
                 </div>
             
-                <figcaption class="result-caption">
-                    Figures: CAD Model of Tool Box designed from given engineering drawings.
-                </figcaption>
-            </figure>
-
-            <p>
-               <strong>CAD Software</strong>: Created a full assembly model using Fusion 360, ensuring proper fitment, tolerances and assembly logic.
-            </p>
+              
         </section>
 
         <section id="Challenges & Trade-offs">
-            <h2>Manufacture Sequence</h2>
+            <h2>Constraint Diagram: Design Choice</h2>
             <p>
-                <strong>Material Selection & Preparation:</strong>  I utilised Aluminum 6061 for the primary housing due to its excellent strength-to-weight ratio and machinability. 
-                Initial stock was rough-cut using a Horizontal Bandsaw, leaving a 2mm margin for precision facing.
+                <strong>Chosen Thrust to Weight Ratio:</strong>  W/S ≈ 40, T/W ≈ 1.0, Reynold's Number ≈ 180,000 ≈ 15m/s​
+                V,Stall = 7.71m/s
             </p>
             <p>
                 <strong>Manual Milling Operations::</strong> Using a Vertical Milling Machine, I squared the stock to within a 5mm tolerance. 
                 Key skills included using a Dial Test Indicator to "tram" the mill head and an Edge Finder to establish a precise (0,0) datum for all subsequent pocketing and drilling operations.
             </p>
-            <p> 
-                <strong>Precision Hole Placement:</strong> Based on the Engineering Drawings, I used a Center Drill to prevent bit deflection, 
-                followed by a sequence of twist drills and a Reamer to ensure the hinge bores were perfectly concentric and smooth.
-            </p>
-            <p>
-                <strong>Benchwork & Finishing: </strong> Final assembly involved manual Hand Tapping for threaded fasteners and extensive Deburring using a swiveling blade tool to
-                ensure all edges were safe and professional.
-            </p>
+           
 
-            <h2>Technical Skills Demonstrated</h2>
+            <h2>UAV Main Wing and Tail Sizing</h2>
                 <p>
-                <strong>Metrology:</strong> Proficient use of Vernier Calipers, Micrometers, and Bore Gauges for quality control.
+                Aircraft was sized using wing loading to calculate wing area, where then minimisng induced drag influenced the choice of the aspect ratio and therefore the rest of the UAV.
+                    Iterations and Aerodynamic performance was calculated using XFLR5 and hand written equations.
                 </p>
-                    <p>
-                        <strong>Blueprint Interpretation:</strong> Translating complex GD&T (Geometric Dimensioning and Tolerancing) symbols into physical machining steps.
-                    </p>
+                
             <p>
                 <strong>Tooling Selection:</strong>Choosing appropriate Carbide vs. HSS (High-Speed Steel) cutters based on the material's surface feet per minute (SFM) requirements.
             </p>
-            <h2>Engineering Challenge: Mitigating Tool Chatter</h2>
-            <p>
-                One significant challenge during the milling of the main toolbox cavity was Workpiece Vibration (Chatter). 
-                As the end mill reached the center of the aluminum block, a high-pitched resonant frequency began to develop, resulting in a poor surface finish and visible "wavy" marks on the interior walls.
-            </p>
+            <h2>UAV Control Surface Sizing</h2>
+            <h2> Stability Analysis </h2>
+            <h2> XFLR5 Airfoil & Wing Performance Analysis </h2>
+            
                 
-            <p>
-                <strong>Diagnosis and Resolution:</strong> Identified that the vibration was caused by an imbalance between the tool's rigidity and the spindle speed. 
-                To resolve this, I performed the following adjustments:
-            </p>
-            <p>
-                <strong>Reduced Spindle Speed (RPM):</strong> Lowered the RPM to move out of the resonant frequency of the setup.
-            </p>
-            <p>
-                <strong>Adjusted Feed Rate:</strong> Increased the Feed per Tooth to ensure the cutter was "biting" into the material rather than rubbing against it, which stabilized the tool pressure.
-            </p>
-            <p>
-                <strong>Increased Rigidity:</strong> Re-clamped the workpiece closer to the vise jaws to minimize the "cantilever effect" of the material.
-            </p>
+           
 
-            <h3>Final Result of Toolbox</h3>
+            <h2>Preliminary Design CAD</h2>
             
             <div class="slideshow-container">
             <div class="mySlides mySlides1">
@@ -289,7 +261,14 @@
             <a class="next" onclick="plusSlides(1, 0)">&#10095;</a>
         </div>
         </section>
+
+
+        <h2>Inital Prototype of Medical UAV</h2>
+        
 </div>
+
+
+
     
 
     <footer>
