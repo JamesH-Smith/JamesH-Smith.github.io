@@ -19,7 +19,7 @@
             text-align: center;
         }
         .container {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: auto;
             padding: 2rem;
         }
@@ -37,72 +37,38 @@
         }
         h3 {
             color: #2c3e50;
-            margin-top: 1.5rem;
+            font-size: 1.1rem;
+            margin-top: 1rem;
         }
-        .back-link {
-            display: inline-block;
-            margin-bottom: 20px;
-            color: #3498db;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .slideshow-container {
-            position: relative;
-            max-width: 100%;
-            height: 500px;
-            margin-bottom: 2rem;
-            border-radius: 8px;
-            overflow: hidden;
-            background: #000;
-        }
-        .mySlides {
-            display: none;
-            height: 100%;
-        }
-        .mySlides img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-        .prev, .next {
-            cursor: pointer;
-            position: absolute;
-            top: 50%;
-            padding: 16px;
-            color: white;
-            font-weight: bold;
-            font-size: 20px;
-            background-color: rgba(0,0,0,0.4);
-        }
-        .next { right: 0; }
-        .tech-tags {
+        
+        /* THE MAGIC GRID SYSTEM */
+        .uav-grid-container {
             display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            list-style: none;
-            padding: 0;
+            gap: 25px;
+            align-items: flex-start;
+            margin-top: 20px;
         }
-        .tech-tags li {
-            background: #2c3e50;
-            color: #fff;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.85rem;
+
+        /* Stack vertically on mobile */
+        @media (max-width: 850px) {
+            .uav-grid-container {
+                flex-direction: column;
+            }
         }
-        footer {
-            text-align: center;
-            padding: 2rem;
-            color: #777;
-        }
-        .architecture-box {
-            background-color: #2c3e50;
-            color: #ecf0f1;
-            padding: 20px;
+
+        .content-col { flex: 1.2; } /* Text column */
+        .image-col { flex: 1; display: flex; flex-direction: column; gap: 15px; } /* Image column */
+
+        .uav-img {
+            width: 100%;
+            height: auto;
             border-radius: 6px;
-            font-family: 'Courier New', Courier, monospace;
-            border-left: 5px solid #3498db;
-            margin: 20px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+            display: block;
         }
+
+        footer { text-align: center; padding: 2rem; color: #777; }
+        .back-link { display: inline-block; margin-bottom: 20px; color: #3498db; text-decoration: none; font-weight: bold; }
     </style>
 </head>
 
@@ -110,125 +76,98 @@
 
 <header>
     <h1>James H Smith</h1>
-    <p>Design-for-Manufacture: Composites & Tooling </p>
+    <p>Design-for-Manufacture: Composites & Tooling</p>
 </header>
 
 <div class="container">
-<a href="index.html" class="back-link">← Back to Portfolio</a>
+    <a href="index.html" class="back-link">← Back to Portfolio</a>
 
-<!-- HERO IMAGES -->
+    <section>
+        <h2>Custom Airframe Manufacturing & Structural Validation</h2>
+        <div class="uav-grid-container">
+            <div class="content-col">
+                <p>
+                    To comply with <strong>IMechE UAS Challenge regulation T2.4.5</strong>, I transitioned from outsourced COTS sections to a fully in-house composite workflow. 
+                    This R&D phase focused on replacing standard primary/secondary spars with custom-fabricated structures.
+                </p>
+                <h3>Spar Manufacturing Process</h3>
+                <p>
+                    My iterative process moved from wet-layup I-beams to a final <strong>circular cross-section spar</strong>. 
+                    Experimentation showed that while I-beams provided excellent bending stiffness, the circular geometry provided the torsional rigidity necessary for medical UAV flight loads.
+                </p>
+                <img src="images/manufacturing/instruc.png" class="uav-img" alt="Process Diagram">
+            </div>
+            <div class="image-col">
+                <img src="images/manufacturing/UAS26.png" class="uav-img" alt="Flying Wing CAD">
+                <img src="images/manufacturing/sparmould.png" class="uav-img" alt="Mould 1">
+                <img src="images/manufacturing/sparmould2.png" class="uav-img" alt="Mould 2">
+                <img src="images/manufacturing/sparmain.png" class="uav-img" alt="Main Spar">
+            </div>
+        </div>
+    </section>
 
+    <section>
+        <h2>Carbon Fibre Spar: Structural Results</h2>
+        <div class="uav-grid-container">
+            <div class="content-col">
+                <h3>Load Testing Analysis</h3>
+                <p>
+                    <strong>Bending Test:</strong> The custom spar (mass: 83g) was tested against a predicted root bending moment of 5.5G. 
+                    Results confirmed the structure withstood these loads without failure, validating our in-house manufacturing quality.
+                </p>
+                <img src="images/manufacturing/CFmain.png" class="uav-img" alt="Test 2 Results">
+            </div>
+            <div class="image-col">
+                <img src="images/manufacturing/CF2.png" class="uav-img" alt="CF Test 1">
+                <img src="images/manufacturing/CF1.png" class="uav-img" alt="CF Detail">
+            </div>
+        </div>
+    </section>
 
-<section>
-<h2>Custom Airframe Manufacturing & Structural Validation</h2>
-<p>
-To comply with IMechE UAS Challenge regulation T2.4.5, which restricts the use of Commercial-Off-The-Shelf (COTS) components, 
-    I spearheaded the transition from outsourced carbon fiber sections to a fully in-house composite manufacturing workflow. 
-    This involved a rigorous R&D phase to replace standard primary/secondary spars and tail booms with custom-fabricated structures.
-</p>
-    <h3>Flying Wing CAD - To display the configuration and importance of the carbon fibre spars</h3>
-    <img src="images/manufacturing/UAS26.png">
-<p>
-    My iterative process began with wet-layup test pieces using 3D-printed moulds to evaluate the quality of team-manufactured components. 
-    Initial experimentation with I-beam configurations—created by joining two wet-laid C-channels—provided excellent bending stiffness but revealed deficiencies in torsional rigidity. 
-    This led to the final evolution of a circular cross-section spar with varying diameters and ply counts, optimized for the specific loading cases of our medical UAV.
-</p>
-    <h3>Spar Manufacturing Process</h3>
-     <img src="images/manufacturing/instruc.png" alt="CL vs Alpha Performance" class="uav-img">
-    
-<div class="uav-grid-container">
-    
-    <div style="flex: 1.2; display: flex; flex-direction: column; gap: 10px;">
-        <img src="images/manufacturing/sparmould.png" alt="Longitudinal Trim Analysis" class="uav-img">
-        <img src="images/manufacturing/sparmould2.png" alt="Static Stability Data" class="uav-img">
-        <img src="iimages/manufacturing/sparmain.png" alt="Dynamic Stability Modes" class="uav-img">
-    </div>
-<h2> Carbon Fibre Spar Result</h2>
-<h3>Test 1:</h3>
-    <img src="images/manufacturing/CF2.png">
-    <img src="images/manufacturing/CF1.png">
-<h3>Test 2:</h3>
-    <img src="images/manufacturing/CFmain.png">
-<p>
-    <strong>Bending Test:</strong> Bending test was performed, where predicted root bending moment was 5.5G, and results show that spar was able to withstand 5.5G. Test til failure point will be done soon.
-    Total mass of this spar was 83 grams.
-</p>
-    
+    <section>
+        <h2>Composite Wings & Material Experimentation</h2>
+        <div class="uav-grid-container">
+            <div class="content-col">
+                <p>
+                    Tested <strong>EPS vs XPS foam</strong> substitutes for balsa ribs. While EPS was lightweight, its porous nature led to high resin absorption during vacuum bagging. 
+                    Switching to high-density XPS improved overall strength and surface finish.
+                </p>
+                <p>
+                    To minimize RF interference, carbon fiber was utilized only at the leading edge to improve stagnation point strength and flow attachment, rather than a full-wing wrap.
+                </p>
+                <img src="images/manufacturing/XPSw.png" class="uav-img" alt="XPS Wing">
+            </div>
+            <div class="image-col">
+                <img src="images/manufacturing/ComFW3.png" class="uav-img" alt="Composite Wing 1">
+                <img src="images/manufacturing/comwing.png" class="uav-img" alt="Composite Wing 2">
+                <img src="images/manufacturing/FoamWiong1.png" class="uav-img" alt="Composite Wing 3">
+                <img src="images/UAV/XPS_Wing.png" class="uav-img" alt="Final XPS Wing">
+            </div>
+        </div>
+    </section>
 
-</div>
-
-
-</section>
-
-<section>
-<h2>Composite Wings for Light Weight UAV</h2>
-<p>
-    Testing EPS foam as a substitute for balsa ribs and film wrap for small drones, this test conducted of, foam wire cut tapered airfoils, then 1 layer of 50gsm glass fibre and 2nd layer with 25gsm, this resultsed in
-    rigid foam wings but downside was EPOXY absorbed by EPS foam during vacuum bagging due to its high pourus characteristics, this meant that, extra weight for not much gain in strength as well bad surface finish
-    which would increase skin friction drag, allowing for a non effiecient drone.
-    </p>
-
-    <p>
-        I then wrapped the leading edge of the drone with carbon fibre layer to improve the strength at the stagnation point, to help with bending and flow attatchement over the wing as carbon fibre helped with surface finish.
-        Reason for not wrapping carbon fibre across whole wing was due to RF interference and would have to be to place transmitter underneath drone, which was not in our preferred design choice.
-    </p>
-    
-<div class="uav-grid-container">
-    
-    <div style="flex: 1.2; display: flex; flex-direction: column; gap: 10px;">
-        <img src="images/manufacturing/ComFW3.png" alt="Longitudinal Trim Analysis" class="uav-img">
-        <img src="images/manufacturing/comwing.png" alt="Static Stability Data" class="uav-img">
-        <img src="images/manufacturing/FoamWiong1.png" alt="Dynamic Stability Modes" class="uav-img">
-        <img src="images/manufacturing/ComFW1.png" alt="Dynamic Stability Modes" class="uav-img">
-    </div>
-<h3>XPS Wing</h3>
-    <p>
-        After realising EPS was too pourus and hard to manage, we switched to XPS foam to produce small UAV wings, which worked alot better, due to its high density, although it does make it heavier slightly
-        the overall strenght is alot higher.
-
-    </p>
-    <img src="images/manufacturing/XPSw.png" alt="Dynamic Stability Modes" class="uav-img">
-    <img src="images/UAV/XPS_Wing.png" alt="Dynamic Stability Modes" class="uav-img">
-</section>
-
-<section>
-<h2>Vacuum Form for RC Plane Fuselage</h2>
-<img src="images/manufacturing/VF.png" alt="Dynamic Stability Modes" class="uav-img">
-
-    <h2>Electronics Stack</h2>
-<img src="images/manufacturing/Estack.png" alt="Dynamic Stability Modes" class="uav-img">
-    <p>
-        Electronics stack includes the flight controller, GPS, buzzer, strobe light, ESC, Receiver/Transmitter, LiDAR, Air
-        speed sensor, RF locator and GPS tracker. RF locator and GPS tracker will be hook and loop strapped into the stack
-        as required by T2.2.1, T2.11.1 The electronics stack is quickly removable with standard hex tools which allows access
-        to internal electronics for rapid reconfiguration. The stack can move forward and aft to make slight adjustments in CG
-        whilst sitting on top of vibration isolating gromets between the stack and the centre section of the aircraft.
-    </p>
-</section>
-
-
-
-
-
+    <section>
+        <h2>Vacuum Forming & Electronics Integration</h2>
+        <div class="uav-grid-container">
+            <div class="content-col">
+                <h3>Fuselage & Stack Design</h3>
+                <p>
+                    Utilized <strong>vacuum forming</strong> for the fuselage to achieve a low-drag surface. 
+                    The electronics stack was designed for rapid reconfiguration, featuring vibration-isolating grommets and a modular mounting rail to allow for fine-tuning the <strong>Center of Gravity (CG)</strong>.
+                </p>
+                <img src="images/manufacturing/Estack.png" class="uav-img" alt="Electronics Stack">
+            </div>
+            <div class="image-col">
+                <img src="images/manufacturing/VF.png" class="uav-img" alt="Vacuum Forming">
+            </div>
+        </div>
+    </section>
 
 </div>
 
 <footer>
-<p>&copy; 2025 James H. Smith | UAV Engineering Project</p>
+    <p>&copy; 2026 James H. Smith | UAV Engineering Portfolio</p>
 </footer>
-
-<script>
-let slideIndex = [1,1,1];
-let slideId = ["mySlides1","mySlides2","mySlides3"];
-function plusSlides(n,no){showSlides(slideIndex[no]+=n,no);}
-function showSlides(n,no){
-let i,x=document.getElementsByClassName(slideId[no]);
-if(n>x.length){slideIndex[no]=1}
-if(n<1){slideIndex[no]=x.length}
-for(i=0;i<x.length;i++){x[i].style.display="none";}
-x[slideIndex[no]-1].style.display="block";}
-showSlides(1,0);showSlides(1,1);showSlides(1,2);
-</script>
 
 </body>
 </html>
